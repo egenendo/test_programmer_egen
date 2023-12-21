@@ -18,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/Produk', [App\Http\Controllers\ProdukController::class, 'index'])->name('produk.index');
+Route::get('/Tambah_Produk', [App\Http\Controllers\ProdukController::class, 'create'])->name('produk.create');
+Route::post('/Simpan_Produk', [App\Http\Controllers\ProdukController::class, 'store'])->name('produk.store');
+Route::get('/Edit_Produk/{id}', [App\Http\Controllers\ProdukController::class, 'edit'])->name('produk.edit');
+Route::post('/Update_Produk/{id}', [App\Http\Controllers\ProdukController::class, 'update'])->name('produk.update');
+Route::get('/Delete_Produk/{id}', [App\Http\Controllers\ProdukController::class, 'delete'])->name('produk.delete');
 
+Route::get('/Produk_Dijual', [App\Http\Controllers\ProdukController::class, 'produk_sell'])->name('produk.produk_sell');

@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('assets/plugins/toastr/toastr.min.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

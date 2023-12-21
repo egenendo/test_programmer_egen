@@ -24,17 +24,16 @@ class Produk extends Model
                 ]
             ]);
             $input = [
-                'username' => 'tesprogrammer221223C00',
+                'username' => 'tesprogrammer221223C03',
                 'password' => md5('bisacoding-22-12-23'),
             ];
             
             $respon = $client->request('POST','https://recruitment.fastprint.co.id/tes/api_tes_programmer',['form_params' => $input]);
             $responseBody = json_decode($respon->getBody()); 
             $produks = $responseBody->data;
-            dd($produks);
+
             foreach($produks as $produk){
                 $data_produk = Produk::where('id_produk',$produk->id_produk)->first();
-                
                 if($data_produk){
                     $data_produk->nama_produk =$produk->nama_produk;
                     $data_produk->harga =$produk->harga;
@@ -51,6 +50,7 @@ class Produk extends Model
                     $data_produk->save();
                 }
             }
+            
             $produk_list = Produk::select('*')
             ->get();
             $response['status'] = 'success';
@@ -65,5 +65,14 @@ class Produk extends Model
         }
         return $response;
         // return response()->json($response);
+    }
+    public function set($data)
+    {
+        $this->nama_produk = isset($data->nama_produk) ? $data->nama_produk : '';
+        $this->harga = isset($data->harga) ? $data->harga : '';
+        $this->kategori_id = isset($data->kategori_id) ? $data->kategori_id : '';
+        $this->status_id = isset($data->status_id) ? $data->status_id : '';
+
+        return $this;
     }
 }

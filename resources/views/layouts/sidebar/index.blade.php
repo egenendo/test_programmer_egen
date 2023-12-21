@@ -73,9 +73,9 @@
                         </p>
                     </a>
                 </li> --}}
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {{ $activePage == 'List_Produk' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                <li class="nav-item {{($activePage == 'List_Produk' ? 'menu-open' : ($activePage == 'List_Produk_Sell' ? 'menu-open' : ''))}}">
+                    <a href="#" class="nav-link {{($activePage == 'List_Produk' ? 'active' : ($activePage == 'List_Produk_Sell' ? 'active' : ''))}}">
+                        <i class="ion ion-bag"></i>
                         <p>
                             Produk
                             <i class="right fas fa-angle-left"></i>
@@ -86,6 +86,12 @@
                             <a href="{{route('produk.index')}}" class="nav-link {{ $activePage == 'List_Produk' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Produk List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('produk.produk_sell')}}" class="nav-link {{ $activePage == 'List_Produk_Sell' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Produk Dijual</p>
                             </a>
                         </li>
                     </ul>

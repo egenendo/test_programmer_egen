@@ -1,7 +1,7 @@
 @extends('welcome')
 @extends('layouts.app', [
-    'activePage' => 'List_Produk',
-    'title' => __('List Produk'),
+    'activePage' => 'List_Produk_Sell',
+    'title' => __('List Produk Sell'),
 ])
 @section('content')
     <div class="content-wrapper">

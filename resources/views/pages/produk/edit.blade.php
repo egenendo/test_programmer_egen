@@ -1,7 +1,7 @@
 @extends('welcome')
 @extends('layouts.app', [
     'activePage' => 'List_Produk',
-    'title' => __('Tambah Produk'),
+    'title' => __('Edit Produk'),
 ])
 @section('content')
     <div class="content-wrapper">
@@ -32,13 +32,13 @@
                             <div class="card-header">
                                 <h3 class="card-title">{{ $moduleDetails['title'] }} {{ $moduleDetails['type'] }}</h3>
                             </div>
-                            <form action="{{route('produk.store')}}" method="POST">
+                            <form action="{{route('produk.update',$produk->id_produk)}}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="nama_produk">Nama Produk</label>
                                         <input type="text" name="nama_produk"
-                                            class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk"
+                                            class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" value="{{$produk->nama_produk}}"
                                             placeholder="Masukan Nama Produk">
                                         @error('nama_produk')
                                             <div class="alert" style="color: red;">{{ $message }}</div>
@@ -47,7 +47,7 @@
                                     <div class="form-group">
                                         <label for="harga">Harga</label>
                                         <input type="text" name="harga" class="form-control @error('harga') is-invalid @enderror" id="harga" onkeypress="return IsNumericHarga(event);" ondrop = "return false;" onpaste="return false;"
-                                            placeholder="Masukan Harga">
+                                            value="{{$produk->harga}}" placeholder="Masukan Harga">
                                             <span id="errorHarga" style="color: Red; display: none">* Input Angka 0-9</span>
                                         @error('harga')
                                             <div class="alert" style="color: red;">{{ $message }}</div>
@@ -58,8 +58,7 @@
                                         <select name="kategori_id" class="form-control @error('kategori_id') is-invalid @enderror" id="kategori_id">
                                             <option value="">Pilih Kategori </option>
                                             @foreach ($kategori_list as $item_kategori)
-                                                <option value="{{ $item_kategori->nama_kategori }}">
-                                                    {{ $item_kategori->nama_kategori }}</option>
+                                                <option value="{{ $item_kategori->nama_kategori }}" @if(isset($produk->kategori_id)) @if($item_kategori->nama_kategori == $produk->kategori_id) selected @endif @endif> {{ $item_kategori->nama_kategori }}</option>
                                             @endforeach
                                         </select>
                                         @error('kategori_id')
@@ -71,8 +70,7 @@
                                         <select name="status_id" class="form-control @error('status_id') is-invalid @enderror" id="status_id">
                                             <option value="">Pilih Status</option>
                                             @foreach ($status_list as $item_status)
-                                                <option value="{{ $item_status->nama_status }}">
-                                                    {{ $item_status->nama_status }}</option>
+                                                <option value="{{ $item_status->nama_status }}" @if(isset($produk->status_id)) @if($item_status->nama_status == $produk->status_id) selected @endif @endif>{{ $item_status->nama_status }}</option>
                                             @endforeach
                                         </select>
                                         @error('status_id')
