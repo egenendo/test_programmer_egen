@@ -10,12 +10,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ $moduleDetails['title'] }} {{ $moduleDetails['type'] }}</h1>
+                        <h1 class="m-0">Produk List</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">{{ $moduleDetails['title'] }} {{ $moduleDetails['type'] }}
+                            <li class="breadcrumb-item active">Produk List
                             </li>
                         </ol>
                     </div><!-- /.col -->
@@ -30,7 +30,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">{{ $moduleDetails['title'] }} {{ $moduleDetails['type'] }}</h3>
+                                <h3 class="card-title">Produk List</h3>
                                 <a href="{{ route('produk.create') }}" class="btn btn-success btn-sm float-right">Tambah</a>
                             </div>
                             <div class="card-body">
@@ -89,12 +89,14 @@
             });
         });
         @if (Session::has('success'))
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true,
-                "timeOut": 10000,
-            }
-            toastr.success("{{ session('success') }}");
+            $('.swalDefaultSuccess').click(function() {
+                Toast.fire({
+                    "closeButton": true,
+                    "progressBar": true,
+                    "timeOut": 10000,
+                })
+            });
+            
         @endif
         @if (Session::has('error'))
             toastr.options = {

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+
 
 class Produk extends Model
 {
@@ -23,13 +25,17 @@ class Produk extends Model
                     'content-type' => 'application/json',
                 ]
             ]);
+            $auth = app('generateAuth');
+            $username = $auth['username'];
+            $password = $auth['password'];
+            
             $input = [
-                'username' => 'tesprogrammer221223C03',
-                'password' => md5('bisacoding-22-12-23'),
+                'username' => $username,
+                'password' => $password,
             ];
             
             $respon = $client->request('POST','https://recruitment.fastprint.co.id/tes/api_tes_programmer',['form_params' => $input]);
-            $responseBody = json_decode($respon->getBody()); 
+            $responseBody = json_decode($respon->getBody());
             $produks = $responseBody->data;
 
             foreach($produks as $produk){

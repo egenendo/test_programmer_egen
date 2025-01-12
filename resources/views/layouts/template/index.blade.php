@@ -4,5 +4,4 @@
 @yield('content')
 @include('layouts.footer.index') {{-- Footer Header --}}
 </div>
-
 @include('layouts.footer.js') {{-- Footer Header --}}

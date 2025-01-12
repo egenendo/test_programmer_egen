@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/listAjax', [App\Http\Controllers\HomeController::class, 'listAjax'])->name('produk.listAjax');
+
 Route::get('/Produk', [App\Http\Controllers\ProdukController::class, 'index'])->name('produk.index');
 Route::get('/Tambah_Produk', [App\Http\Controllers\ProdukController::class, 'create'])->name('produk.create');
 Route::post('/Simpan_Produk', [App\Http\Controllers\ProdukController::class, 'store'])->name('produk.store');

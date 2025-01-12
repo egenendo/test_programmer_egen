@@ -45,6 +45,8 @@
 {{-- <script src="{{asset('assets/dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('assets/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- Toastr -->
 <script src="{{asset('assets/plugins/toastr/toastr.min.js')}}"></script>
 @stack('javascript')
